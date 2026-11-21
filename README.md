@@ -1,8 +1,5 @@
 Muhammad Usman | @AbuTalha63 on GitHub
 
-Layout:
-Parent folder refers to Unit
-   -  session.problem set within session
-   -  ex: 2.3 = Session 2, Problem set 3
+-My personal space to practice on provided questions and learn common DSA problem solving
 
-CodePath course: Technical Interview Prep (TIP) 101 | Section 1 | taken Summer 2026
+CodePath course: Technical Interview Prep (TIP) 101 | Section 3 | taken Fall 2026
