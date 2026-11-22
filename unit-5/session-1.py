@@ -27,9 +27,9 @@ class Pokemon:
             "is_caught": self.is_caught
         })
         
-my_pokemon = Pokemon("Pikachu", "Electric")
+my_pokemon = Pokemon("Pikachu", ["Electric"])
 
-squirtle = Pokemon("Squirtle", "Water")
+squirtle = Pokemon("Squirtle", ["Water"])
 squirtle.print_pokemon()
 
 squirtle.is_caught = True
@@ -150,8 +150,6 @@ def print_linked_list(head):
     while current:
         result.append(current.value)
         current = current.next
-    return result
-
-parts = print_linked_list(node_one)
-print(" -> ".join(parts))
-#endregion
+    answer = " -> ".join(result)
+    print(answer)
+print_linked_list(node_one)
