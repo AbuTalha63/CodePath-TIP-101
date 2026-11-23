@@ -138,27 +138,45 @@ should copy the entire list. If the list contains no nodes, return None.
 
 The copy must use new Node objects. Re-using the original nodes is not a copy.
 
-class Node:
-    def __init__(self, value, next_node = None):
-        self.value = value
-        self.next = next_node
-
-def copy_first_n_nodes(head, n):
-    # Write your code here
-
-Example Input:
-    head = node1, n = 3
-    # linked list = a->b->c->d->e
-
-Example Output:
-    a->b->c
-
 Additional test cases to check yourself against:
     - head is None: return None.
     - n is larger than the length of the list: the whole list is copied.
     - The original list is unchanged after the call.
+
+Understand:
+ - I/O: 
 '''
+class Node:
+    def __init__(self, value, next_node = None):
+        self.value = value
+        self.next = next_node
+        
+    def print_node(self):
+        print({
+            "Node: ": self,
+            "value: ": self.value,
+            "next_node: ": self.next
+        })
+
+def copy_first_n_nodes(head, n):
+    pass
+                    
+
+# Example Input:
+#     head = node1, n = 3
+#    linked list = a->b->c->d->e
+# Example Output:
+#     a->b->c
+
+node_5 = Node("e")
+node_4 = Node("d", node_5)
+node_3 = Node("c", node_4)
+node_2 = Node("b", node_3)
+node_1 = Node("a", node_2)
 #endregion
+
+
+
 
 #region Problem 4: Skip-Level Reports
 '''
@@ -209,6 +227,7 @@ Additional test cases to check yourself against:
 '''
 #endregion
 
+
 #region Problem 5: Build Linked List
 '''
 PROBLEM 5: Build Linked List
@@ -249,6 +268,9 @@ Additional test cases to check yourself against:
 '''
 #endregion
 
+
+
+
 #region Problem 6: Copy Linked List
 '''
 PROBLEM 6: Copy Linked List
@@ -260,6 +282,11 @@ order.
 Every node in the returned list must be a new Node object. If the original list
 is empty, return None.
 
+
+Additional test cases to check yourself against:
+    - head is None: return None.
+    - Changing a value in the copy does not change the original.
+'''
 class Node:
     def __init__(self, value, next=None):
         self.value = value
@@ -267,26 +294,40 @@ class Node:
 
 def copy_linked_list(head):
     # Write your code here
+    if not head:
+        return None
+    current = head
+    new_head = current.value
+    while current.next is not None:
+        current_value = current.value
+        new_node_tail = Node(current_value)
+        new_node_tail.next = current.next
+    return new_head               # BUGGY CODE - not final just a work in progress playing around / logic etc
 
-Example Usage:
-    # original linked list: a->b->c
-    copy = copy_linked_list(a)
-    print(copy.value)
-    print(copy.next.value)
-    print(copy is a)
-    print(copy.next is a.next)
+# node creation
+node_3 = Node("c")
+node_2 = Node("b", node_3)
+node_1 = Node("a", node_2)
+    
+# Example Usage:
+#     # original linked list: a->b->c
+#     copy = copy_linked_list(a)
+#     print(copy.value)
+#     print(copy.next.value)
+#     print(copy is a)
+#     print(copy.next is a.next)
 
-Example Output:
-    a
-    b
-    False
-    False
+# Example Output:
+#     a
+#     b
+#     False
+#     False
+    
 
-Additional test cases to check yourself against:
-    - head is None: return None.
-    - Changing a value in the copy does not change the original.
-'''
 #endregion
+
+
+
 
 #region Problem 7: Values Until
 '''
