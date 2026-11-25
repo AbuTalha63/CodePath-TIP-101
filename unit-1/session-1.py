@@ -11,11 +11,13 @@ PROBLEM 1: Hello World!
 Given the following lines of code, work with your group members to place the
 lines in order and write and call your first Python function!
 
-a. print("Hello world!")
-b. def hello_world():
-c. hello_world()
 '''
+def hello_world():
+    print("Hello world!")
+
+hello_world()
 #endregion
+
 
 #region Problem 2: Today's Mood
 '''
@@ -25,15 +27,14 @@ The following function uses a variable, mood, to print out "Today's mood: 😎".
 Copy this code into your IDE and update the mood variable to print out your
 mood for today.
 
+'''
+
 def todays_mood():
-    mood = "😎"
+    mood = "🍪"
     print("Today's mood: " + mood)
 
 todays_mood()
 
-Example Output:
-    Today's mood: 🥱
-'''
 #endregion
 
 #region Problem 3: Lunch Menu
@@ -43,13 +44,12 @@ PROBLEM 3: Lunch Menu
 The following function accepts one parameter menu. Copy this code into your
 IDE and add a function call so that "Lunch today is: 🍕" is printed to the
 console.
-
+'''
 def print_menu(menu):
     print("Lunch today is: " + menu)
+    
+print_menu("🍪")
 
-Example Output:
-    Lunch today is: 🍕
-'''
 #endregion
 
 #region Problem 4: Sum of Two Integers

@@ -1,4 +1,6 @@
 Muhammad Usman | @AbuTalha63 on GitHub
+LinkedIn: linkedin.com/in/muhammadusman-tech
+email: usmanm6390@gmail.com
 
 -My personal space to practice on provided questions and learn common DSA problem solving
 
