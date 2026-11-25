@@ -108,7 +108,7 @@ def keys_v_values(dictionary):
     if key_total > value_total:
         return "keys"
     elif value_total > key_total:
-        return "Values"
+        return "values"
     else:
         return "balanced"
 # Example Usage:
@@ -139,17 +139,12 @@ be added. The function should return the updated dictionary
 current_inventory.
 '''
 def restock_inventory(current_inventory, restock_list):
-    # for key in current_inventory:
-    #     if key in restock_list.keys():
-    #         current_inventory[key] += restock_list[key]
-    #     else:
-    #         current_inventory[restock_list.get(key)] = restock_list[key]
-    # return current_inventory
     for item, quantity in restock_list.items():
-        # if item in current_inventory.keys():
         current_stock = current_inventory.get(item, 0)
-        quantity += current_stock
-        
+        current_inventory[item] = current_stock + quantity
+        # get the amount required to restock from restock_list
+        # restock sent amount to corresponding item in current_inventory
+    return current_inventory   
 # Example Input:
 current_inventory = {
     "apples": 30,
@@ -161,7 +156,7 @@ restock_list = {
     "apples": 10,
     "pears": 5
 }
-
+print(restock_inventory(current_inventory, restock_list))
 # Example Output:
 #     {
 #         "apples": 40,
@@ -189,14 +184,52 @@ grade points:
     "D" = 1
     "F" = 0
 A GPA is calculated by finding the average of all grade points.
+UPI:
+Understand:
+ - I/O: dictionary(course:grade)/float gpa
+ - Grades are strings
+ - The strings grades need to be convertoed to corresponding grade output based on grade points
+ - edge cases:
+  - Empty dict: return None
+  - one course: return that one
+  - I don't think the course names matter at all
+Plan:
+ - Create function
+ - figure out how many courses, assign that to count that must be divided by later
+ - extract all the Course grades and figure out the corresponding grade points
+  - 2 ways I can think of: 1. dictionary (might be too much since only small pool) or 2. Just if/elif logic
+ - calculate avg, and return
+Implement: (method 2; elif logic)
 '''
-# def calculate_gpa(report_card):
-#     pass
+def calculate_gpa(report_card):
+    course_count, grade_points = 0, 0
+    for value in report_card.values():
+        course_count += 1
+        if value == "A":
+            grade_points += 4
+        elif value == "B":
+            grade_points += 3
+        elif value == "C":
+            grade_points += 2
+        elif value == "D":
+            grade_points += 1
+        elif value == "F":
+            grade_points += 0
+        else:
+            return "Invalid course grade"
+    return float(grade_points / course_count) # note: float casting not neccesary
+    
 # Example Usage:
-# report_card = {"Math": "A", "Science": "C", "History": "A", "Art": "B", "English": "B", "Spanish": "A"}
-# print(calculate_gpa(report_card))
+report_card = {"Math": "A", "Science": "C", "History": "A", "Art": "B", "English": "B", "Spanish": "A"}
+print(calculate_gpa(report_card))
 # Example Output:
 #     3.3333333333333335
+# Implement: (method 1; dict)
+
+def calculate_gpa_dict(report_card):
+    pass
+
+
 #endregion
 
 
