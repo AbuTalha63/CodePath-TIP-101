@@ -24,7 +24,7 @@ B) {'ana': 7, 'ben': 8, 'cy': 2}
 C) {'ana': 12, 'ben': 8, 'cy': 2}
 D) KeyError
 '''
-# ANSWER:
+# ANSWER: B
 #endregion
 
 #region Q2 (Multiple Choice, 5 pts)
@@ -39,7 +39,7 @@ B) KeyError
 C) 0
 D) 'clips'
 '''
-# ANSWER:
+# ANSWER: C
 #endregion
 
 #region Q3 (Multiple Choice, 5 pts)
@@ -60,7 +60,7 @@ B) ['b', 'c', 'd']
 C) {'b': 3, 'c': 5}
 D) ['b', 'c']
 '''
-# ANSWER:
+# ANSWER: D
 #endregion
 
 #region Q4 (Multiple Choice, 5 pts)
@@ -85,7 +85,7 @@ B) The return statement is indented inside the loop, so the function returns
 C) The function should loop over range(len(s)) instead of s.
 D) counts is never initialized, causing a NameError.
 '''
-# ANSWER:
+# ANSWER: B
 #endregion
 
 #region Q5 (Coding, 20 pts): Matching Keys
@@ -113,9 +113,29 @@ Example 3:
 # The function is expected to return a LIST.
 # The function accepts DICTIONARY d1 and DICTIONARY d2 as parameters.
 #
-
+'''
+UPI
+Understand:
+ - I/O: 2 DICTS / 1 LIST of matching KEYS across both dicts No values returned (but the values would have to match ofc too)
+ - they key-value pairs have to match 100%, but the order does not have to (like as in their order within their respoective dicts)
+ - in the returned list, the keys should be in the order they appear based on d1 specefically
+ - no matching return empty list (Maybe indicates for loop since otherwise it would be a None retunred???)
+ 
+Plan:
+ - create function
+ - init list empty
+ - for loop over key / values in d1:
+ - if key / value pair in in d2, add to list (make sure it can check for outta order ones too tho)
+ - outta loop: return list
+Implement:
+'''
 def matching_keys(d1, d2):
     # Write your code here
+    ans = []
+    for key, value in d1.items():
+        if key in d2.keys() and value == d2[key]:
+            ans.append(key)
+    return ans
 
 
 # Sample tests (the hidden tests include more)
@@ -141,6 +161,18 @@ Example 2:
 Example 3:
     Input:  []
     Output: None
+UPI:
+Understand:
+ - I/O: list / int
+ - no ties
+ - None if empty
+Plan:
+ - function
+ - init empty dict
+ - for each num in list nums, create corresponding dict entry
+  - new dict [key = num instance variable] += 1 (?)
+ - return highest value - not sure yet
+Implement:
 '''
 #
 # Complete the 'most_frequent' function below.
@@ -148,9 +180,13 @@ Example 3:
 # The function is expected to return an INTEGER (or None).
 # The function accepts INTEGER_ARRAY nums as parameter.
 #
-
 def most_frequent(nums):
     # Write your code here
+    if not nums: return
+    d1 = {}
+    for num in nums:
+        d1[num] = 1
+    return max(d1.values())
 
 
 # Sample tests (the hidden tests include more)
