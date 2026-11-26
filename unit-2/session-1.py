@@ -54,7 +54,7 @@ print(create_dictionary(keys, values))
 
 
 
-#region Problem 3: Print Pair
+#region 3: Print Pair
 '''
 PROBLEM 3: Print Pair
 Write a function print_pair() that takes in a dictionary dictionary and a key
@@ -84,7 +84,7 @@ print_pair(dictionary, "spongebob")
 
 
 
-#region Problem 4: Keys Versus Values
+#region 4: Keys Versus Values
 '''
 PROBLEM 4: Keys Versus Values
 Write a function keys_v_values() that takes in a dictionary dictionary whose
@@ -125,7 +125,7 @@ print(greater_sum)
 
 
 
-#region Problem 5: Restock Inventory
+#region 5: Restock Inventory
 '''
 PROBLEM 5: Restock Inventory
 Write a function restock_inventory() that updates an inventory dictionary
@@ -168,7 +168,7 @@ print(restock_inventory(current_inventory, restock_list))
 
 
 
-#region Problem 6: Calculate GPA
+#region Problem 6A: Calculate GPA
 '''
 PROBLEM 6: Calculate GPA
 Write a function calculate_gpa() that calculates the grade point average
@@ -223,13 +223,51 @@ def calculate_gpa(report_card):
 report_card = {"Math": "A", "Science": "C", "History": "A", "Art": "B", "English": "B", "Spanish": "A"}
 print(calculate_gpa(report_card))
 # Example Output:
-#     3.3333333333333335
-# Implement: (method 1; dict)
+#     3.
 
+# Implement: method 2; dict
+'''
+Write a function calculate_gpa() that calculates the grade point average
+(GPA) for a student based on their course grades and returns the gpa as a
+float. The function takes in a dictionary report_card as a parameter where
+each key-value pair represents a course and the grade received in that
+course respectively. The grades are represented as strings
+("A", "B", "C", "D", "F") and each grade corresponds to a certain number of
+grade points:
+    "A" = 4
+    "B" = 3
+    "C" = 2
+    "D" = 1
+    "F" = 0
+A GPA is calculated by finding the average of all grade points.
+UPI
+Undestand: 
+ - I/O: Dictionary of Course:letter grade
+ - grades need to be turned into a grade point corresponding
+ - for this try, gonna use a dictionary to assign corresponding grade points
+ - refer to dictionary to determine grade points
+Plan:
+ - creat function
+ - init grade point & course count vars
+ - have hard-coded grade points dict
+ - for loop: for each grade in report_card -> refer that to grade points dict (?)
+ - outta for loop, divide grade points by course count and return
+Implement:
+'''
 def calculate_gpa_dict(report_card):
-    pass
-
-
+    if not report_card: return None # fail safe for empty report_card (but why does the student have an empty report card lol)
+    grade_points_total, course_count = 0, 0
+    points = {"A": 4, "B": 3, "C": 2, "D": 1, "F": 0}
+    for value in report_card.values():
+        grade_points_total += points[value] # .get(value could work, but this is better. .get() is ideal if a missing key has a simple default (like 0 in the invetory question) & direct key accesss via [] is better if a bad key means bad input (which will return "KeyError[{key}] -> showing you which input was bad"))
+        # course_count += 1       # more effeicent way below: len(report_card)
+    return grade_points_total / len(report_card)
+        
+# Example Usage:
+report_card = {"Math": "A", "Science": "C", "History": "A", "Art": "B", "English": "B", "Spanish": "A"}
+print(calculate_gpa_dict(report_card))
+# Example Output:
+#     3.3333333333333335
 #endregion
 
 
@@ -243,24 +281,43 @@ The function should take in a list of dictionaries named books as a
 parameter. Each dictionary represents data associated with a book, including
 its title, author, and rating. The function should return the dictionary for
 the book with the highest rating.
+# UPI:
+Understand:
+ - I/O: a LIST of Dictionaries / A single full DICTIONARY with all fields
+ - Each dict has 3 keu-val pairs, and we only care about rating
+ - must return full dict with all info
+ - want highest rating, rating is a float
+Plan:
+ - create function
+ - init high_so_far var
+ - for each dict in books list, access the rating key
+ - if rating is higher then high_so_far, change high_so_far to rating
+ - outta for loop, return the entire dict (not just the rating)
+Implement:
 '''
-# def highest_rated(books):
-#     pass
+def highest_rated(books):
+    if not books: return None
+    high_dict = books[0]
+    for book in books:
+        if book["rating"] >= high_dict["rating"]:
+            high_dict = book
+    return high_dict
 # Example Input:
-# books = [
-#     {"title": "Tomorrow, and Tomorrow, and Tomorrow",
-#      "author": "Gabrielle Zevin",
-#      "rating": 4.18
-#     },
-#     {"title": "A Fortune For Your Disaster",
-#      "author": "Hanif Abdurraqib",
-#      "rating": 4.47
-#     },
-#     {"title": "The Seven Husbands of Evenlyn Hugo",
-#      "author": "Taylor Jenkins Reid",
-#      "rating": 4.40
-#     }
-# ]
+books = [
+    {"title": "Tomorrow, and Tomorrow, and Tomorrow",
+     "author": "Gabrielle Zevin",
+     "rating": 4.18
+    },
+    {"title": "A Fortune For Your Disaster",
+     "author": "Hanif Abdurraqib",
+     "rating": 4.47
+    },
+    {"title": "The Seven Husbands of Evenlyn Hugo",
+     "author": "Taylor Jenkins Reid",
+     "rating": 4.40
+    }
+]
+print(highest_rated(books))
 # Expected Output:
 #     {"title": "A Fortune For Your Disaster",
 #      "author": "Hanif Abdurraqib",
@@ -276,12 +333,18 @@ PROBLEM 8: Index-Value Map
 Write a function index_to_value_map() that takes in a list lst and returns a
 dictionary that maps the index of each element in lst to its value.
 '''
-# def index_to_value_map(lst):
-#     pass
+def index_to_value_map(lst_q8):
+    index = 0
+    dictionary_q8 = {}
+    for item in lst_q8:
+        dictionary_q8[index] = lst_q8[index]
+        index += 1
+    return dictionary_q8
 # Example Input:
-# lst = ["apple", "banana", "cherry"]
+lst_q8 = ["apple", "banana", "cherry"]
 # Example Output:
 #     {0: "apple", 1: "banana", 2: "cherry"}
+print(index_to_value_map(lst_q8))
 #endregion
 
 
